@@ -20,6 +20,13 @@ spring:
     sql:
         init:
             platform: h2
+    data:
+      redis:
+        database: 0
+        host: localhost
+        port: 16379
+        password: mypass
+        timeout: 60000
 
 server:
     port: 8080

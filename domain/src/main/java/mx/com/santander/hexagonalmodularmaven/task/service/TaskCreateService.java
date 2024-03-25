@@ -9,9 +9,11 @@ public class TaskCreateService {
 
     private final TaskRepository taskRepository;
     private final TaskSuperComplexService taskSuperComplexService;
-    public TaskCreateService(TaskRepository taskRepository, TaskSuperComplexService taskSuperComplexService) {
+    private final TaskRedisService taskRedisService;
+    public TaskCreateService(TaskRepository taskRepository, TaskSuperComplexService taskSuperComplexService, TaskRedisService taskRedisService) {
         this.taskRepository = taskRepository;
         this.taskSuperComplexService = taskSuperComplexService;
+        this.taskRedisService = taskRedisService;
     }
 
     public Task execute(TaskCreateCommand createCommand){
@@ -24,6 +26,8 @@ public class TaskCreateService {
 
         var taskToCreate = new Task()
                 .requestToCreate(createCommand);
+        
+        final String idRedis = taskRedisService.execute();
         return taskRepository.create(taskToCreate);
     }
 
