@@ -21,15 +21,16 @@ spring:
             platform: postgres
     data:
         redis:
-        database: 0
-        host: localhost
-        port: 16379
-        password: mypass
-        timeout: 60000
+            database: 0
+            host: localhost
+            port: 16379
+            password: mypass
+            timeout: 60000
         mongodb:
             database: example
             uri: mongodb://root:example@localhost:27017/admin?connectTimeoutMS=10000&authSource=admin
 
+photo-base-url: "https://jsonplaceholder.typicode.com"
 server:
     port: 8080
     servlet:
