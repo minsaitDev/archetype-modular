@@ -24,4 +24,11 @@ public class PhotoDBMapper {
 				entity.getThumbnailUrl());
 	}
 
+	public PhotoEntity toDboCreate(Photo domain) {
+		if(domain == null){
+            return null;
+        }
+		return new PhotoEntity(domain.getAlbumId(),domain.getTitle(),domain.getUrl(),domain.getThumbnailUrl());
+	}
+
 }
