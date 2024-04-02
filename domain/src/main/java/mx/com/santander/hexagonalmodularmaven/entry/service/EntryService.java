@@ -5,7 +5,6 @@ import mx.com.santander.hexagonalmodularmaven.entry.model.Entry;
 import mx.com.santander.hexagonalmodularmaven.entry.port.dao.EntryDao;
 import mx.com.santander.hexagonalmodularmaven.entry.port.repository.EntryRepository;
 import mx.com.santander.hexagonalmodularmaven.user.model.entity.User;
-
 @RequiredArgsConstructor
 public class EntryService {
     private final EntryRepository entryRepository;

@@ -23,8 +23,8 @@ spring:
         redis:
         database: 0
         host: localhost
-        port: 16379
-        password: mypass
+        port: 6379
+        password:
         timeout: 60000
         mongodb:
             database: example

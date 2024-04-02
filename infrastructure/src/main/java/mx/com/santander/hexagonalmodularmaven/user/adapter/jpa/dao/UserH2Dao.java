@@ -41,4 +41,5 @@ public class UserH2Dao implements UserDao {
                 .map(userDboMapper::toDomain)
                 .collect(Collectors.toList());
     }
+
 }
