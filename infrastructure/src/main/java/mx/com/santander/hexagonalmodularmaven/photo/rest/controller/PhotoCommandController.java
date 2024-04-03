@@ -1,5 +1,6 @@
 package mx.com.santander.hexagonalmodularmaven.photo.rest.controller;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,13 +12,10 @@ import mx.com.santander.hexagonalmodularmaven.photo.model.dto.command.PhotoCreat
 
 @RestController
 @RequestMapping("/photos")
+@RequiredArgsConstructor
 public class PhotoCommandController {
 	private final PhotoCreateHandler photoCreateHandler;
-	
-	public PhotoCommandController(PhotoCreateHandler photoCreateHandler){
-		this.photoCreateHandler = photoCreateHandler;
-	}
-	
+
 	@PostMapping()
 	public PhotoDto create(@RequestBody PhotoCreateCommand photoCreateCommand) {
 		return photoCreateHandler.execute(photoCreateCommand);

@@ -39,3 +39,17 @@ server:
         context-path: /example
         session:
             timeout: 21600s
+
+    kafka:
+        consumer:
+            bootstrap-servers: localhost:9092
+            group-id: my-consumer-group
+            auto-offset-reset: earliest
+            properties:
+                key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+                value.deserializer: org.apache.kafka.common.serialization.StringDeserializer
+        producer:
+            bootstrap-servers: localhost:9092
+            properties:
+                key.serializer: org.apache.kafka.common.serialization.StringSerializer
+                value.serializer: org.apache.kafka.common.serialization.StringSerializer

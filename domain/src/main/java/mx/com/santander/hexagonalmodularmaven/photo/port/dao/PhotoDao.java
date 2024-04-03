@@ -1,8 +1,8 @@
 package mx.com.santander.hexagonalmodularmaven.photo.port.dao;
 
-import java.util.List;
-
 import mx.com.santander.hexagonalmodularmaven.photo.model.entity.Photo;
+
+import java.util.List;
 
 public interface PhotoDao {
 	

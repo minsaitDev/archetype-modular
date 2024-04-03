@@ -1,15 +1,14 @@
 package mx.com.santander.hexagonalmodularmaven.photo.rest.controller;
 
-import java.util.List;
-
+import mx.com.santander.hexagonalmodularmaven.photo.model.dto.PhotoDto;
+import mx.com.santander.hexagonalmodularmaven.photo.query.PhotoAllHandler;
+import mx.com.santander.hexagonalmodularmaven.photo.query.PhotoByIdHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import mx.com.santander.hexagonalmodularmaven.photo.model.dto.PhotoDto;
-import mx.com.santander.hexagonalmodularmaven.photo.query.PhotoAllHandler;
-import mx.com.santander.hexagonalmodularmaven.photo.query.PhotoByIdHandler;
+import java.util.List;
 
 @RestController
 @RequestMapping("/photos")
