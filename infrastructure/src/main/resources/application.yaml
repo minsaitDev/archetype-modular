@@ -29,7 +29,10 @@ spring:
         mongodb:
             database: example
             uri: mongodb://root:example@localhost:27017/admin?connectTimeoutMS=10000&authSource=admin
-
+feign:
+    name: jplaceholder
+    base-url: "https://jsonplaceholder.typicode.com"
+    photo-resource: "/photos"
 server:
     port: 8080
     servlet:

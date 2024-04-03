@@ -1,19 +1,15 @@
 package mx.com.santander.hexagonalmodularmaven.task.service;
 
+import lombok.RequiredArgsConstructor;
 import mx.com.santander.hexagonalmodularmaven.task.model.constant.TaskConstant;
 import mx.com.santander.hexagonalmodularmaven.task.port.dao.TaskDao;
 import mx.com.santander.hexagonalmodularmaven.task.port.repository.TaskRepository;
 import mx.com.santander.hexagonalmodularmaven.user.model.exception.UserTaskAssignationException;
-
+@RequiredArgsConstructor
 public class TaskDeleteService {
 
     private final TaskRepository taskRepository;
     private final TaskDao taskDao;
-    public TaskDeleteService(TaskRepository taskRepository, TaskDao taskDao) {
-        this.taskRepository = taskRepository;
-        this.taskDao = taskDao;
-    }
-
     public void execute(Long id){
 
         var task = taskDao.getById(id);

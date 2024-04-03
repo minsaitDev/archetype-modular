@@ -1,15 +1,12 @@
 package mx.com.santander.hexagonalmodularmaven.task.service;
 
+import lombok.RequiredArgsConstructor;
 import mx.com.santander.hexagonalmodularmaven.redis.port.RedisPort;
-
+@RequiredArgsConstructor
 public class TaskRedisService {
 	
 	private final RedisPort redisPort;
-	
-	public TaskRedisService(RedisPort redisPort){
-		this.redisPort = redisPort;
-	}
-	
+
 	public String execute() {
 		return redisPort.saveRedis();
 	}
