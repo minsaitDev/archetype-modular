@@ -59,7 +59,7 @@ Este proyecto es una base para desarrollar con arquitectura hexagonal, tiene 5 a
 
 
 # Reglas del juego 🌟
-Este proyecto está estructurado de manera modular comprendido por los siguientes módulos:- Bases de datos relacionales como Postgres,Oracle,H2,MySql (uso de JPA)
+Este proyecto está estructurado de manera modular comprendido por los siguientes módulos:
 
 ## Capa de Aplicación (Application) 📱
 
@@ -147,7 +147,7 @@ En una clase DAO:
 
 ## Recomendaciones para desarrollar con este proyecto:
 
-Esta guía proporciona una recomendación general sobre cómo desarrollar con la arquitectura CQRS junto con el patrón Repository y DAO. Estas son algunas sugerencias sobre cómo podrías abordar el desarrollo de cada capa en tu aplicación.
+Esta guía proporciona una recomendación general sobre cómo desarrollar con CQRS junto con el patrón Repository y DAO. Estas son algunas sugerencias sobre cómo podrías abordar el desarrollo de cada capa en tu aplicación.
 
 ## Capa de Dominio (Domain Layer) 🌐
 
