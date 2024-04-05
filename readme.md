@@ -49,9 +49,142 @@ Esta arquitectura se suele representar con forma de hexágono, pero el número d
 - <p align="justify"><b>Complejidad Inicial:</b> Implementar la Arquitectura Hexagonal puede requerir una planificación cuidadosa y un entendimiento profundo de los principios, lo que puede aumentar la complejidad inicial del desarrollo.</p>
 - <p align="justify"><b>Curva de Aprendizaje:</b> Para los desarrolladores nuevos en esta metodología, puede haber una curva de aprendizaje significativa al comprender la estructura y los patrones de diseño específicos de la Arquitectura Hexagonal.</p></p>
 
+## A cerca de este proyecto (arquetipo maven)
+Este proyecto es una base para desarrollar con arquitectura hexagonal, tiene 5 adaptadores o puertos que son:
+- Bases de datos relacionales como Postgres,Oracle,H2,MySql (uso de JPA)
+- MongoDB
+- Redis cache
+- Consumo de API´s REST con Feign
+- Kafka (consumidor y productor)
+
+
+# Reglas del juego 🌟
+Este proyecto está estructurado de manera modular comprendido por los siguientes módulos:- Bases de datos relacionales como Postgres,Oracle,H2,MySql (uso de JPA)
+
+## Capa de Aplicación (Application) 📱
+
+- La capa de aplicación es donde reside la lógica de la aplicación y actúa como un intermediario entre la interfaz de usuario y el dominio. 
+- Es responsable de interpretar los comandos o solicitudes recibidas desde la interfaz de usuario y orquestar la ejecución de las operaciones necesarias para satisfacer esas solicitudes.
+- Aquí se definen los casos de uso de la aplicación y se implementan como servicios de aplicación o controladores.
+- Esta capa maneja la transacción, la seguridad y la coordinación de operaciones.
+
+## Capa de Arranque (Bootloader) 🚀
+
+- La capa de arranque inicializa y configura la aplicación.
+
+## Capa de Dominio (Domain) 🌐
+
+- La capa de dominio contiene la lógica central y las reglas de negocio de la aplicación.
+- Aquí se definen las entidades y servicios del dominio, independientes de la tecnología.
+
+## Capa de Infraestructura (Infrastructure) 💻
+- La capa de infraestructura proporciona implementaciones concretas de los puertos definidos en la capa de aplicación, permitiendo que la aplicación interactúe con recursos externos, como bases de datos, servicios web, sistemas de archivos, etc.
+- Incluye adaptadores que conectan la lógica de la aplicación con recursos externos.
+- Los detalles de implementación específicos de la infraestructura están encapsulados en esta capa.
+
+Esta arquitectura promueve la modularidad, la reutilización y la testabilidad del código, facilitando el mantenimiento y la evolución del sistema a lo largo del tiempo.
+
+#  Patrones de diseño implementados🛠️
+## Patrón CQRS (Command Query Responsibility Segregation) 🔄
+
+El patrón CQRS (Command Query Responsibility Segregation) es un patrón arquitectónico que sugiere separar las operaciones de lectura (queries) de las operaciones de escritura (commands) en un sistema. En lugar de tener un único modelo de dominio para manejar tanto las consultas como las modificaciones de los datos, el patrón CQRS propone tener dos modelos distintos: uno para realizar consultas y otro para manejar comandos.
+
+## Principios del Patrón CQRS
+
+- **Separación de responsabilidades**: Divide las operaciones de lectura y escritura en modelos separados, lo que permite optimizar cada modelo para su tarea específica.
+- **Modelado del dominio enfocado**: Permite modelar los comandos y consultas según las necesidades del negocio, sin comprometer la simplicidad o la eficiencia.
+- **Escalabilidad**: Al tener modelos de lectura y escritura separados, es posible escalar y optimizar cada uno de forma independiente, según los requerimientos de rendimiento.
+- **Consistencia eventual**: Dado que los comandos pueden modificar el estado del sistema de forma asíncrona, el patrón CQRS tiende a ser más adecuado para escenarios donde la consistencia eventual es aceptable.
+
+## Componentes del Patrón CQRS
+
+- **Comandos (Commands)**: Representan las operaciones de escritura que modifican el estado del sistema. Los comandos suelen ser imperativos y desencadenan acciones que afectan al dominio de la aplicación.
+- **Consultas (Queries)**: Representan las operaciones de lectura que recuperan datos del sistema sin modificar su estado. Las consultas suelen ser declarativas y devuelven información para su visualización o procesamiento posterior.
+- **Modelo de escritura (Write Model)**: Es el modelo de dominio encargado de manejar los comandos y realizar las modificaciones en el estado del sistema.
+- **Modelo de lectura (Read Model)**: Es el modelo de dominio optimizado para realizar consultas de manera eficiente. Este modelo puede estar denormalizado y precalculado para mejorar el rendimiento en las operaciones de lectura.
+
+## Beneficios del Patrón CQRS
+
+- **Mejora el rendimiento**: Al tener modelos de lectura optimizados, se pueden ejecutar consultas de manera más eficiente, lo que mejora el rendimiento del sistema.
+- **Simplicidad en el modelado del dominio**: Al separar los comandos de las consultas, se puede modelar cada aspecto del negocio de manera más simple y enfocada.
+- **Escalabilidad**: Permite escalar los componentes de lectura y escritura por separado, lo que facilita el manejo de grandes volúmenes de datos y picos de carga.
+- **Flexibilidad**: Al tener modelos de lectura y escritura separados, se pueden adaptar y evolucionar de forma independiente según los cambios en los requisitos del negocio.
+
+El patrón CQRS es especialmente útil en aplicaciones donde la carga de lectura y escritura son significativamente diferentes, o donde se requiere un modelado del dominio complejo y flexible.
+
+## Patrón Value Object (¡tu decides implementarlo! 😎)
+
+El patrón Value Object es un patrón de diseño que se utiliza para representar un objeto que no tiene una identidad propia, sino que se valora únicamente por sus atributos o valores. A diferencia de las entidades, los objetos de valor son inmutables y comparables por sus valores internos en lugar de por identificadores únicos.
+
+## Características del Patrón Value Object
+
+- **Inmutabilidad**: Los objetos de valor son inmutables, lo que significa que una vez creados, sus valores no pueden modificarse.
+- **Comparabilidad por valor**: La igualdad entre dos objetos de valor se determina comparando sus valores internos en lugar de referencias de memoria.
+- **Identidad basada en los valores**: Dos objetos de valor con los mismos valores internos se consideran iguales, independientemente de su instancia.
+
+## Ejemplos de Value Objects
+
+- **Fecha de nacimiento**: Representa una fecha específica en el calendario. Dos fechas con el mismo día, mes y año se consideran iguales, independientemente de su instancia.
+- **Correo electrónico**: Representa una dirección de correo electrónico. Dos correos electrónicos con la misma dirección se consideran iguales, independientemente de su instancia.
+
+## Beneficios del Patrón Value Object
+
+- **Expresa intenciones**: Los objetos de valor encapsulan un concepto específico del dominio y expresan claramente la intención del código.
+- **Promueve la inmutabilidad**: Al ser inmutables, los objetos de valor evitan efectos secundarios no deseados y hacen que el código sea más fácil de razonar y mantener.
+- **Simplifica la comparación**: La comparabilidad basada en valores simplifica la lógica de igualdad y reduce la necesidad de implementar métodos de comparación personalizados.
+
+En el proyecto en la capa de infraestructura encontraras paquetes nombrados como:  
+- **repository**: se recomienda para operaciones de escritura.
+- **DAO**: se recomineda para operaciones de lectura.
+
+Por ejemplo al consumir un API REST en una clase repository tendriamos los verbos:
+- **POST**
+- **PUT**
+- **DELETE**
+
+En una clase DAO: 
+- **GET**
+
+## Recomendaciones para desarrollar con este proyecto:
+
+Esta guía proporciona una recomendación general sobre cómo desarrollar con la arquitectura CQRS junto con el patrón Repository y DAO. Estas son algunas sugerencias sobre cómo podrías abordar el desarrollo de cada capa en tu aplicación.
+
+## Capa de Dominio (Domain Layer) 🌐
+
+- Comienza por definir tus entidades de dominio y las reglas de negocio que las rodean. Estas entidades deben representar conceptos fundamentales de tu dominio.
+- Define interfaces para tus repositorios que especifican los métodos necesarios para interactuar con las entidades de dominio. Estas interfaces deben centrarse en las operaciones de lectura y escritura relacionadas con las entidades.
+- No te preocupes demasiado por la implementación de los métodos en esta etapa, ya que se completarán en la capa de infraestructura.
+
+## Capa de Infraestructura (Infrastructure Layer) 💻
+
+- Implementa los repositorios concretos y los DAOs que interactúan con la base de datos. Estos repositorios deben implementar las interfaces definidas en la capa de dominio.
+- Crea las clases y métodos necesarios para realizar operaciones de lectura y escritura en la base de datos. Asegúrate de que estas operaciones sean coherentes con el modelo de dominio definido anteriormente.
+- En esta etapa, puedes utilizar herramientas y tecnologías específicas para acceder y manipular la base de datos, como JDBC, JPA, Hibernate, etc.
+
+## Capa de Aplicación (Application Layer) 📱
+
+- Implementa los servicios de aplicación que actúan como intermediarios entre la interfaz de usuario y las operaciones de lectura y escritura en la base de datos.
+- Utiliza los repositorios definidos en la capa de infraestructura para realizar operaciones de lectura y escritura en la base de datos.
+- Define los casos de uso de la aplicación y los controladores que interactúan con los servicios de aplicación. Estos casos de uso deben reflejar las funcionalidades específicas que la aplicación ofrece a los usuarios.
+
+## Pruebas y Refactorización 🛠️
+
+- Una vez que hayas completado la implementación de cada capa, realiza pruebas exhaustivas para garantizar que todas las funcionalidades se comporten como se espera.
+- Si es necesario, realiza refactorizaciones para mejorar la claridad y la mantenibilidad del código. Esto puede incluir la extracción de métodos, la reorganización de clases o la simplificación de la lógica compleja.
+
+Recuerda que estas etapas no son necesariamente lineales y pueden superponerse en ciertos puntos del desarrollo. Además, es importante mantener un enfoque iterativo en el desarrollo de software, lo que significa que puedes revisar y ajustar tu diseño a medida que avanzas en el desarrollo y adquieres más conocimiento sobre los requisitos y desafíos de tu aplicación.
+
 
 ## Bibliografía
 - [Arquitectura Hexagonal](https://medium.com/@edusalguero/arquitectura-hexagonal-59834bb44b7f)
 - [Explorando la Arquitectura Hexagonal](https://es.linkedin.com/pulse/explorando-la-arquitectura-hexagonal-un-enfoque-en-su-mu%C3%B1oz-garro-nhyee)
 - [Hexagonal Architecture, there are always two sides to every story](https://medium.com/ssense-tech/hexagonal-architecture-there-are-always-two-sides-to-every-story-bc0780ed7d9c)
 - [Aprende Arquitectura Hexagonal](https://www.youtube.com/watch?v=eNFAJbWCSww&ab_channel=CodelyTV-Redescubrelaprogramaci%C3%B3n)
+
+## Contribución 🤝
+
+¡Contribuye a nuestro proyecto y ayúdanos a hacerlo aún más genial! Aquí tienes algunas formas de contribuir:
+
+- Realiza pruebas y envía informes de errores 🐞
+- Agrega nuevas características 🛠️
+- Mejora la documentación 📖
