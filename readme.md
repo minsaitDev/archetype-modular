@@ -174,6 +174,28 @@ Esta guía proporciona una recomendación general sobre cómo desarrollar con CQ
 
 Recuerda que estas etapas no son necesariamente lineales y pueden superponerse en ciertos puntos del desarrollo. Además, es importante mantener un enfoque iterativo en el desarrollo de software, lo que significa que puedes revisar y ajustar tu diseño a medida que avanzas en el desarrollo y adquieres más conocimiento sobre los requisitos y desafíos de tu aplicación.
 
+# ¡Anuncio Importante! 🚀
+
+## Cambios Flexibles con la Capa de Infraestructura
+
+¡Nuestra aplicación permite una integración flexible con cualquier framework o tecnología en la capa de infraestructura!
+
+### ¿Qué significa esto?
+
+La capa de infraestructura es donde se implementan los detalles específicos de cómo nuestra aplicación interactúa con recursos externos, como bases de datos, servicios web y más. Lo emocionante es que ahora puedes elegir el framework o tecnología que mejor se adapte a tus necesidades y preferencias.
+
+### ¿Por qué es importante?
+
+- **Flexibilidad**: No estás limitado a un único framework o tecnología. Puedes adaptar la capa de infraestructura para utilizar cualquier herramienta que se ajuste mejor a tu proyecto.
+
+- **Eficiencia**: Al utilizar herramientas familiares o las que mejor se ajusten a tu proyecto, puedes aumentar la eficiencia y reducir el tiempo de desarrollo.
+
+- **Innovación**: Mantenemos nuestras opciones abiertas para adoptar nuevas tecnologías y aprovechar las últimas innovaciones en el desarrollo de software.
+
+### ¿Cómo funciona?
+
+Simplemente elige el framework o tecnología que prefieras y sigue las pautas de integración proporcionadas en nuestra documentación. ¡Es así de fácil!
+
 
 ## Bibliografía
 - [Arquitectura Hexagonal](https://medium.com/@edusalguero/arquitectura-hexagonal-59834bb44b7f)
